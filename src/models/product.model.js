@@ -13,7 +13,10 @@ const productSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    required: [true, "Category required"]
+    enum: {
+      values: ["electronics", "clothing", "food"],
+      message: "Invalid category"
+    }
   },
   inStock: {
     type: Boolean,

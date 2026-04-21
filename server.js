@@ -7,9 +7,14 @@ const productRoutes = require("./src/routes/product.routes");
 const app = express();
 app.use(express.json());
 
+// Connect to MongoDB Atlas
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB connected"))
-  .catch(err => console.log(err));
+  .then(() => {
+      console.log("MongoDB connected")
+  })
+  .catch(err => {
+      console.log(err)
+  });
 
 app.use("/api/products", productRoutes);
 
